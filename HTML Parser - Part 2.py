@@ -2,15 +2,15 @@ from html.parser import HTMLParser
 
 class MyHTMLParser(HTMLParser):
     def handle_comment(self, data):
-        if len(data.strip("\n")) == 1: # seperate the content inside comment tag (<!-- -->) by "\n". if only one element, single line.
-            print (">>>Single-line Comment")
+        if len(data.split("\n")) == 1: # seperate the content inside comment tag (<!-- -->) by "\n". if only one element, single line.
+            print (">>> Single-line Comment")
         else:
-            print (">>>Multi-line Comment")
+            print (">>> Multi-line Comment")
         print (data)
 
     def handle_data (self, data):
-        if data.strip():   #herein, data include all "\n". (?)
-            print (">>>Data")
+        if data.strip():   #herein, data include all "\n". (?) do not show data if data == \n
+            print (">>> Data")
             print (data)
 
 html = ""
